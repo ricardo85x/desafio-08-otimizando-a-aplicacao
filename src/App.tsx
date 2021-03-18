@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 
-import { Button } from './components/Button';
-import { MovieCard } from './components/MovieCard';
-
 import { SideBar } from './components/SideBar';
 import { Content } from './components/Content';
+import { Header } from './components/Header';
 
 import { api } from './services/api';
 
 import './styles/global.scss';
-
 import './styles/sidebar.scss';
 import './styles/content.scss';
 
@@ -31,10 +28,9 @@ interface MovieProps {
 }
 
 export function App() {
+
   const [selectedGenreId, setSelectedGenreId] = useState(1);
-
   const [genres, setGenres] = useState<GenreResponseProps[]>([]);
-
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
 
@@ -59,18 +55,17 @@ export function App() {
   }
 
   return (
+
     <div style={{ display: 'flex', flexDirection: 'row' }}>
 
       <SideBar genres={genres} selectedGenreId={selectedGenreId} handleClickButton={handleClickButton} />
 
       <div className="container">
-        <header>
-          <span className="category">Categoria:<span> {selectedGenre.title}</span></span>
-        </header>
-
+        <Header selectedGenre={selectedGenre}/>
         <Content movies={movies} />
-
       </div>
+
     </div>
+
   )
 }

@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
 import {Button} from './Button';
 
-interface GenreProps {
+interface SideBarProps {
   genres: Array<{
     id: number;
     name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family';
@@ -11,11 +9,9 @@ interface GenreProps {
   selectedGenreId: number,
   handleClickButton: Function
 
-
 }
 
-export function SideBar({ genres, selectedGenreId, handleClickButton }: GenreProps ) {
-
+export function SideBar({ genres, selectedGenreId, handleClickButton }: SideBarProps ) {
 
   return (
     <nav className="sidebar">
